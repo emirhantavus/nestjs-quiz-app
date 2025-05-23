@@ -8,9 +8,32 @@ POST http://localhost:3000/quiz
 Content-Type: application/json
 
 {
-  "title": "Matematik",
-  "description": "Matematik sorulari"
+  "title": "son",
+  "description": "son sorulari"
 }
 
 ### Get quiz by id
-GET http://localhost:3000/quiz/2
+GET http://localhost:3000/quiz/1
+
+### Delete quiz
+
+DELETE http://localhost:3000/quiz/3
+
+### Update quiz
+
+PUT http://localhost:3000/quiz/1
+Content-Type: application/json
+
+{
+  "title": "PUT Calisiyor",
+  "description": "PUT sorulari"
+}
+
+### Update using PATCH method
+
+PATCH http://localhost:3000/quiz/4
+Content-Type: application/json
+
+{
+  "title": "PATCH ile güncellendi"
+}

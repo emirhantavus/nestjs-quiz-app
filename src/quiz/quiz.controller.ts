@@ -1,6 +1,16 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Patch,
+  Put,
+} from '@nestjs/common';
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from './create-quiz.dto';
+import { UpdateQuizDto } from './update-quiz.dto';
 
 @Controller('quiz')
 export class QuizController {
@@ -17,7 +27,22 @@ export class QuizController {
   }
 
   @Post()
-  create(@Body() createQuizDto: CreateQuizDto) {
+  async create(@Body() createQuizDto: CreateQuizDto) {
     return this.quizService.create(createQuizDto);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return this.quizService.delete(Number(id));
+  }
+
+  @Patch(':id')
+  async update(@Param('id') id: string, @Body() dto: UpdateQuizDto) {
+    return this.quizService.update(Number(id), dto);
+  }
+
+  @Put(':id')
+  async updatePut(@Param('id') id: string, @Body() dto: UpdateQuizDto) {
+    return this.quizService.updatePut(Number(id), dto);
   }
 }
