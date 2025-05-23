@@ -1,0 +1,16 @@
+### Get quizzes
+GET http://localhost:3000/quiz
+
+
+
+### Add new quiz
+POST http://localhost:3000/quiz
+Content-Type: application/json
+
+{
+  "title": "Matematik",
+  "description": "Matematik sorulari"
+}
+
+### Get quiz by id
+GET http://localhost:3000/quiz/2
