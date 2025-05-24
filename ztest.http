@@ -37,3 +37,22 @@ Content-Type: application/json
 {
   "title": "PATCH ile güncellendi"
 }
+
+### Get users
+
+GET http://localhost:3000/user
+
+### Get user by id
+
+GET http://localhost:3000/user/1/
+
+### Register
+
+POST http://127.0.0.1:3000/user/register/
+Content-Type: application/json
+
+{
+  "username": "test",
+  "email": "test@gmail.com",
+  "password": "test123"
+}
