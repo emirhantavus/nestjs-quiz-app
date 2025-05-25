@@ -5,6 +5,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
 import { BadRequestException } from '@nestjs/common';
+import { LoginUserDto } from './login-user.dto';
+import { UnauthorizedException } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
@@ -39,5 +41,19 @@ export class UserService {
       }
       throw error;
     }
+  }
+
+  async login(loginUserDto: LoginUserDto) {
+    const user = await this.userRepository.findOneBy({
+      email: loginUserDto.email,
+    });
+    if (!user) {
+      throw new UnauthorizedException('Invalid email or password');
+    }
+    if (user.password !== loginUserDto.password) {
+      throw new UnauthorizedException('Invalid password');
+    }
+
+    return { message: 'Login successful', user };
   }
 }
