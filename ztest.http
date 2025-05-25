@@ -8,8 +8,8 @@ POST http://localhost:3000/quiz
 Content-Type: application/json
 
 {
-  "title": "son",
-  "description": "son sorulari"
+  "title": "123",
+  "description": "123456"
 }
 
 ### Get quiz by id
@@ -25,18 +25,18 @@ PUT http://localhost:3000/quiz/1
 Content-Type: application/json
 
 {
-  "title": "PUT Calisiyor",
+  "title": "Validation OK",
   "description": "PUT sorulari"
 }
 
 ### Update using PATCH method
 
-PATCH http://localhost:3000/quiz/4
+PATCH http://localhost:3000/quiz/1
 Content-Type: application/json
 
 {
-  "title": "PATCH ile güncellendi"
-}
+  "description": "PATCH ile güncellendi"
+} 
 
 ### Get users
 

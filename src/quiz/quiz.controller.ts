@@ -11,6 +11,7 @@ import {
 import { QuizService } from './quiz.service';
 import { CreateQuizDto } from './create-quiz.dto';
 import { UpdateQuizDto } from './update-quiz.dto';
+import { PatchQuizDto } from './patch-quiz.dto';
 
 @Controller('quiz')
 export class QuizController {
@@ -37,7 +38,7 @@ export class QuizController {
   }
 
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdateQuizDto) {
+  async update(@Param('id') id: string, @Body() dto: PatchQuizDto) {
     return this.quizService.update(Number(id), dto);
   }
 
