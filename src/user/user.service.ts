@@ -4,6 +4,7 @@ import { User } from './user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
@@ -25,7 +26,18 @@ export class UserService {
   }
 
   async create(createUserDto: CreateUserDto) {
-    const user = this.userRepository.create(createUserDto);
-    return await this.userRepository.save(user);
+    try {
+      const user = this.userRepository.create(createUserDto);
+      return await this.userRepository.save(user);
+    } catch (error) {
+      if (
+        error.code === 'SQLITE_CONSTRAINT' ||
+        error.code === '23505' ||
+        error.code === 'ER_DUP_ENTRY'
+      ) {
+        throw new BadRequestException('Email or username already exists');
+      }
+      throw error;
+    }
   }
 }
