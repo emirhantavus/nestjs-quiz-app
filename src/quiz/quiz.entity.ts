@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Question } from 'src/question/question.entity';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity()
 export class Quiz {
@@ -10,4 +11,7 @@ export class Quiz {
 
   @Column()
   description: string;
+
+  @OneToMany(() => Question, (question) => question.quiz)
+  questions: Question[];
 }
