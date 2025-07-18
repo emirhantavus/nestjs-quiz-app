@@ -34,7 +34,7 @@ export class QuizService {
     if (!quiz) {
       throw new NotFoundException(`Quiz with id ${id} not found`);
     }
-    return await this.quizRepository.delete(quiz);
+    return await this.quizRepository.delete(id);
   }
 
   async update(id: number, dto: UpdateQuizDto) {

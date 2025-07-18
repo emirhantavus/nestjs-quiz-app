@@ -57,3 +57,33 @@ Content-Type: application/json
   "email": "nestjs@gmail.com",
   "password": "nestjs"
 }
+
+### Get all questions
+GET http://127.0.0.1:3000/question/
+
+### Get question by id
+GET http://127.0.0.1:3000/question/1/
+
+### Create question
+POST http://127.0.0.1:3000/question/
+Content-Type: application/json
+
+{
+  "text": "Question 1",
+  "options": ["a1","a2","a3","a4"],
+  "correctAnswer": "a2"
+  //quizId: will be added.
+}
+
+### Update question
+PATCH http://127.0.0.1:3000/question/1/
+Content-Type: application/json
+
+{
+  "text": "Question 1",
+  "options": ["ac1","ac2","ac3","ac4"],
+  "correctAnswer": "ac4"
+}
+
+### Delete question
+DELETE http://127.0.0.1:3000/question/1/
